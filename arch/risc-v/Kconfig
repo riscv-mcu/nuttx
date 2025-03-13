@@ -21,6 +21,19 @@ config ARCH_CHIP_FE310
 	---help---
 		SiFive FE310 processor (E31 RISC-V Core with MAC extensions).
 
+config ARCH_CHIP_NUCLEI_EVALSOC
+	bool "Nuclei evalsoc"
+	select ARCH_RV32
+	select ARCH_RV_ISA_M
+	select ARCH_RV_ISA_A
+	select ARCH_RV_ISA_C
+	select ARCH_HAVE_FPU
+	select ARCH_HAVE_DPFPU
+	select ONESHOT
+	select ALARM_ARCH
+	---help---
+		Nuclei evalsoc processor for custom evaluate (NUCLEI RISC-V Core with GC extensions).
+
 config ARCH_CHIP_K210
 	bool "Kendryte K210"
 	select ARCH_RV64
@@ -483,6 +496,7 @@ config ARCH_FAMILY
 config ARCH_CHIP
 	string
 	default "fe310"                 if ARCH_CHIP_FE310
+	default "nuclei-evalsoc"        if ARCH_CHIP_NUCLEI_EVALSOC
 	default "k210"                  if ARCH_CHIP_K210
 	default "litex"                 if ARCH_CHIP_LITEX
 	default "bl602"                 if ARCH_CHIP_BL602
@@ -688,6 +702,9 @@ source "arch/risc-v/src/nuttsbi/Kconfig"
 
 if ARCH_CHIP_FE310
 source "arch/risc-v/src/fe310/Kconfig"
+endif
+if ARCH_CHIP_NUCLEI_EVALSOC
+source "arch/risc-v/src/nuclei-evalsoc/Kconfig"
 endif
 if ARCH_CHIP_K210
 source "arch/risc-v/src/k210/Kconfig"

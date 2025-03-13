@@ -728,6 +728,13 @@ config ARCH_BOARD_HIFIVE1_REVB
 		This is the board configuration for the port of NuttX to the SiFive HiFive1
 		Rev B board.  This board features the RISC-V FE310-G002
 
+config ARCH_BOARD_NUCLEI_FPGA_EVAL
+	bool "Nuclei Evalsoc Rev FPGA board"
+	depends on ARCH_CHIP_NUCLEI_EVALSOC
+	---help---
+		This is the board configuration for the port of NuttX to the NUCLEI Evalsoc
+		Rev board.  This board features the RISC-V NUCLEI
+
 config ARCH_BOARD_HYMINI_STM32V
 	bool "HY-Mini STM32v board"
 	depends on ARCH_CHIP_STM32F103VC
@@ -3319,6 +3326,7 @@ config ARCH_BOARD
 	default "gd32f470zk-aiotbox"        if ARCH_BOARD_GD32F470ZK_AIOTBOX
 	default "gd32f470ik-eval"           if ARCH_BOARD_GD32F470IK_EVAL
 	default "hifive1-revb"              if ARCH_BOARD_HIFIVE1_REVB
+	default "nuclei-fpga-eval"          if ARCH_BOARD_NUCLEI_FPGA_EVAL
 	default "hymini-stm32v"             if ARCH_BOARD_HYMINI_STM32V
 	default "imxrt1020-evk"             if ARCH_BOARD_IMXRT1020_EVK
 	default "imxrt1050-evk"             if ARCH_BOARD_IMXRT1050_EVK
